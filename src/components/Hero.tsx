@@ -1,19 +1,25 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Activity, Shield, Wifi } from "lucide-react";
 import { motion } from "framer-motion";
 
 const threatRows = [
-  { label: "Network Intrusion Detection", value: "99.7%", color: "text-[var(--text-primary)]" },
-  { label: "Anomaly Classification", value: "98.3%", color: "text-[var(--text-primary)]" },
-  { label: "Latency (p99)", value: "<12ms", color: "text-[var(--success)]" },
-  { label: "Events Processed / sec", value: "2.4M", color: "text-[var(--text-primary)]" },
+  { label: "Network Intrusion Detection", value: "99.7%", percent: 99.7, color: "var(--accent)" },
+  { label: "Anomaly Classification", value: "98.3%", percent: 98.3, color: "var(--gradient-mid)" },
+  { label: "Latency (p99)", value: "<12ms", percent: 88, color: "var(--success)" },
+  { label: "Events Processed / sec", value: "2.4M", percent: 76, color: "var(--gradient-end)" },
 ];
 
 const metaRows = [
   { label: "Model Version", value: "v4.2.1-stable" },
   { label: "Deployment Region", value: "EU-WEST-1 / SOVEREIGN" },
 ];
+
+/* Mini sparkline data (fake points for visual) */
+const sparkPoints = [4, 6, 5, 8, 7, 9, 8, 11, 10, 12, 11, 14, 12, 13, 15, 14, 16, 15, 18, 17, 19, 20, 18, 21, 20, 22, 21, 24, 23, 25];
+const sparkPath = sparkPoints
+  .map((y, i) => `${i === 0 ? "M" : "L"}${i * (220 / (sparkPoints.length - 1))},${30 - y}`)
+  .join(" ");
 
 export default function Hero() {
   return (
@@ -113,66 +119,166 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Right Data Panel — Glassmorphic + Floating */}
+      {/* ── Right Data Panel — Premium Dashboard Card ── */}
       <motion.div
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute right-[80px] top-[120px] w-[480px] animate-float"
+        className="absolute right-[80px] top-[100px] w-[500px] animate-float"
         style={{ animationDuration: "8s" }}
       >
-        <div className="flex flex-col gap-4 p-6 rounded-[10px] glass glow-accent">
-          {/* Header */}
-          <div className="flex items-center justify-between">
-            <span className="font-mono text-[10px] text-[var(--text-muted)] tracking-[3px]">
-              LIVE THREAT ANALYSIS
-            </span>
-            <div className="flex items-center gap-1.5">
-              <div className="w-1.5 h-1.5 rounded-full bg-[var(--success)] animate-blink" style={{ boxShadow: "0 0 8px rgba(34,197,94,0.4)" }} />
-              <span className="font-mono text-[10px] text-[var(--success)] tracking-[2px]">
-                ACTIVE
-              </span>
+        {/* Outer glow wrapper */}
+        <div className="relative">
+          {/* Animated gradient border */}
+          <div
+            className="absolute -inset-[1px] rounded-[14px] opacity-40"
+            style={{
+              background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end), var(--gradient-start))",
+              backgroundSize: "300% 300%",
+              animation: "gradient-rotate 6s ease infinite",
+            }}
+          />
+
+          {/* Card body */}
+          <div
+            className="relative flex flex-col rounded-[13px] overflow-hidden"
+            style={{
+              background: "linear-gradient(145deg, rgba(12,18,33,0.92), rgba(6,9,15,0.97))",
+              backdropFilter: "blur(24px)",
+              boxShadow: "0 30px 80px rgba(0,0,0,0.5), 0 0 60px rgba(59,130,246,0.05), inset 0 1px 0 rgba(255,255,255,0.04)",
+            }}
+          >
+            {/* ── Top Chrome Bar ── */}
+            <div className="flex items-center justify-between px-5 py-3 border-b border-white/[0.06]" style={{ background: "rgba(255,255,255,0.02)" }}>
+              <div className="flex items-center gap-3">
+                <div className="flex gap-1.5">
+                  <div className="w-[9px] h-[9px] rounded-full bg-[#FF5F57]" />
+                  <div className="w-[9px] h-[9px] rounded-full bg-[#FEBC2E]" />
+                  <div className="w-[9px] h-[9px] rounded-full bg-[#28C840]" />
+                </div>
+                <span className="font-mono text-[10px] text-[var(--text-muted)] tracking-[2px] ml-1">
+                  LIVE THREAT ANALYSIS
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <div className="w-[6px] h-[6px] rounded-full bg-[var(--success)] animate-blink" style={{ boxShadow: "0 0 10px rgba(34,197,94,0.5)" }} />
+                <span className="font-mono text-[9px] text-[var(--success)] tracking-[2px]">
+                  ACTIVE
+                </span>
+              </div>
             </div>
-          </div>
 
-          <div className="w-full h-px bg-gradient-to-r from-transparent via-[var(--border-hover)] to-transparent" />
-
-          {/* Data rows */}
-          {threatRows.map((row, i) => (
-            <motion.div
-              key={row.label}
-              initial={{ opacity: 0, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 0.8 + i * 0.1 }}
-              className="flex items-center justify-between py-2"
-            >
-              <span className="text-[12px] text-[var(--text-secondary)]">{row.label}</span>
-              <span className={`font-mono text-[13px] font-medium ${row.color}`}>
-                {row.value}
-              </span>
-            </motion.div>
-          ))}
-
-          <div className="w-full h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
-
-          {/* Meta rows */}
-          {metaRows.map((row) => (
-            <div key={row.label} className="flex items-center justify-between py-1.5">
-              <span className="text-[12px] text-[var(--text-muted)]">{row.label}</span>
-              <span className="font-mono text-[12px] text-[var(--text-muted)]">{row.value}</span>
+            {/* ── Sparkline + Summary Row ── */}
+            <div className="flex items-center gap-5 px-5 py-4 border-b border-white/[0.04]">
+              <div className="flex-1">
+                <svg width="220" height="32" viewBox="0 0 220 32" fill="none" className="w-full">
+                  <defs>
+                    <linearGradient id="spark-grad" x1="0" y1="0" x2="220" y2="0" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="var(--gradient-start)" />
+                      <stop offset="0.5" stopColor="var(--gradient-mid)" />
+                      <stop offset="1" stopColor="var(--gradient-end)" />
+                    </linearGradient>
+                    <linearGradient id="spark-fill" x1="0" y1="0" x2="0" y2="32" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="var(--accent)" stopOpacity="0.15" />
+                      <stop offset="1" stopColor="var(--accent)" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <path d={`${sparkPath} L220,32 L0,32 Z`} fill="url(#spark-fill)" />
+                  <path d={sparkPath} stroke="url(#spark-grad)" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+                  {/* Pulse dot at the end */}
+                  <circle cx="220" cy={30 - sparkPoints[sparkPoints.length - 1]} r="3" fill="var(--accent)">
+                    <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+                  </circle>
+                </svg>
+              </div>
+              <div className="flex flex-col items-end gap-0.5">
+                <span className="text-[22px] font-bold text-[var(--text-primary)] tracking-[-0.5px] leading-none">
+                  2.4M
+                </span>
+                <span className="font-mono text-[9px] text-[var(--success)] tracking-[1px]">
+                  +12.4% ↑
+                </span>
+                <span className="font-mono text-[8px] text-[var(--text-muted)] tracking-[1px]">
+                  EVENTS/SEC
+                </span>
+              </div>
             </div>
-          ))}
 
-          {/* Threat bar */}
-          <div className="flex flex-col gap-2 pt-2">
-            <span className="font-mono text-[9px] text-[var(--text-muted)] tracking-[2px]">
-              THREAT SEVERITY DISTRIBUTION
-            </span>
-            <div className="flex w-full h-5 gap-0.5 rounded-[3px] overflow-hidden">
-              <div className="w-[60px] bg-[var(--danger)] rounded-[3px]" />
-              <div className="w-[110px] bg-[var(--orange)] rounded-[3px]" />
-              <div className="w-[180px] bg-[var(--warning)] rounded-[3px]" />
-              <div className="flex-1 bg-[var(--border)] rounded-[3px]" />
+            {/* ── Data Rows with Progress Bars ── */}
+            <div className="flex flex-col px-5 py-3">
+              {threatRows.map((row, i) => (
+                <motion.div
+                  key={row.label}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.8 + i * 0.1 }}
+                  className="flex items-center gap-3 py-[10px] border-b border-white/[0.03] last:border-0"
+                >
+                  <span className="text-[11px] text-[var(--text-secondary)] flex-1 min-w-0">{row.label}</span>
+                  {/* Mini progress bar */}
+                  <div className="w-[80px] h-[3px] rounded-full bg-white/[0.06] overflow-hidden flex-shrink-0">
+                    <motion.div
+                      className="h-full rounded-full"
+                      style={{ background: row.color }}
+                      initial={{ width: 0 }}
+                      animate={{ width: `${row.percent}%` }}
+                      transition={{ duration: 1.2, delay: 1 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                    />
+                  </div>
+                  <span className="font-mono text-[12px] font-semibold text-[var(--text-primary)] w-[52px] text-right flex-shrink-0">
+                    {row.value}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* ── Meta Footer ── */}
+            <div className="flex items-center justify-between px-5 py-3 border-t border-white/[0.05]" style={{ background: "rgba(255,255,255,0.015)" }}>
+              <div className="flex items-center gap-4">
+                {metaRows.map((row) => (
+                  <div key={row.label} className="flex items-center gap-1.5">
+                    <span className="font-mono text-[8px] text-[var(--text-muted)] tracking-[1px]">{row.label}:</span>
+                    <span className="font-mono text-[9px] text-[var(--text-secondary)]">{row.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Bottom Status Bar ── */}
+            <div className="flex items-center gap-4 px-5 py-2.5 border-t border-white/[0.04]" style={{ background: "rgba(255,255,255,0.01)" }}>
+              <div className="flex items-center gap-1.5">
+                <Shield size={10} className="text-[var(--success)]" strokeWidth={2} />
+                <span className="font-mono text-[8px] text-[var(--success)] tracking-[1px]">ENCRYPTED</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Activity size={10} className="text-[var(--accent)]" strokeWidth={2} />
+                <span className="font-mono text-[8px] text-[var(--accent)] tracking-[1px]">MONITORING</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Wifi size={10} className="text-[var(--gradient-end)]" strokeWidth={2} />
+                <span className="font-mono text-[8px] text-[var(--gradient-end)] tracking-[1px]">SOVEREIGN</span>
+              </div>
+              {/* Threat severity mini bar */}
+              <div className="flex-1 flex justify-end">
+                <div className="flex h-[6px] gap-[2px] rounded-[2px] overflow-hidden">
+                  <div className="w-[16px] bg-[var(--danger)] rounded-[1px]" />
+                  <div className="w-[28px] bg-[var(--orange)] rounded-[1px]" />
+                  <div className="w-[44px] bg-[var(--warning)] rounded-[1px]" />
+                  <div className="w-[20px] bg-[var(--border)] rounded-[1px]" />
+                </div>
+              </div>
+            </div>
+
+            {/* ── Scan line animation ── */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[13px]">
+              <div
+                className="absolute left-0 right-0 h-[1px] opacity-[0.07]"
+                style={{
+                  background: "linear-gradient(to right, transparent, var(--accent), transparent)",
+                  animation: "scan-line 4s ease-in-out infinite",
+                }}
+              />
             </div>
           </div>
         </div>
@@ -180,6 +286,19 @@ export default function Hero() {
 
       {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--bg-primary)] to-transparent pointer-events-none" />
+
+      {/* Scan line + gradient rotate keyframes */}
+      <style jsx>{`
+        @keyframes scan-line {
+          0% { top: -2px; }
+          100% { top: 100%; }
+        }
+        @keyframes gradient-rotate {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
     </section>
   );
 }
