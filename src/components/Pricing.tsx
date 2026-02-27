@@ -56,23 +56,23 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="relative flex flex-col items-center gap-14 w-full py-28 px-[120px] bg-[var(--bg-primary)]">
+    <section id="pricing" className="relative flex flex-col items-center gap-16 w-full py-32 px-[120px] bg-[var(--bg-primary)]">
       {/* Header */}
       <div className="flex flex-col items-center gap-5">
         <AnimateIn variant="fadeUp" delay={0.1}>
-          <span className="font-mono text-[10px] text-[var(--accent)] tracking-[4px]">
+          <span className="font-mono text-[11px] text-[var(--accent)] tracking-[4px]">
             PRICING
           </span>
         </AnimateIn>
         <AnimateIn variant="fadeUp" delay={0.2}>
-          <h2 className="text-[44px] font-semibold text-[var(--text-primary)] leading-[1.12] tracking-[-1px] text-center max-w-[600px]">
+          <h2 className="text-[48px] font-semibold text-[var(--text-primary)] leading-[1.12] tracking-[-1.5px] text-center max-w-[640px]">
             Infrastructure scaled to your
             <br />
             <span className="gradient-text">operational requirements.</span>
           </h2>
         </AnimateIn>
         <AnimateIn variant="fadeUp" delay={0.3}>
-          <p className="text-[15px] text-[var(--text-secondary)] text-center leading-[1.7]">
+          <p className="text-[16px] text-[var(--text-secondary)] text-center leading-[1.75]">
             All plans include SOC 2 compliance, 24/7 support, and 99.99% SLA.
           </p>
         </AnimateIn>
@@ -83,7 +83,7 @@ export default function Pricing() {
         {plans.map((plan) => (
           <StaggerItem key={plan.tag}>
             <div
-              className={`relative flex flex-col gap-6 p-7 rounded-[12px] h-full transition-all duration-300 ${
+              className={`relative flex flex-col gap-6 p-8 rounded-[12px] h-full transition-all duration-300 ${
                 plan.highlighted
                   ? "bg-[var(--bg-surface)] gradient-border glow-accent"
                   : "bg-[var(--bg-surface)] card-hover"
@@ -97,7 +97,7 @@ export default function Pricing() {
               {/* Tag */}
               <div className="flex items-center gap-3 relative z-10">
                 <span
-                  className={`font-mono text-[10px] tracking-[3px] ${
+                  className={`font-mono text-[11px] tracking-[3px] ${
                     plan.highlighted ? "text-[var(--accent)]" : "text-[var(--text-muted)]"
                   }`}
                 >
@@ -118,7 +118,7 @@ export default function Pricing() {
                 <span className="text-[14px] text-[var(--text-muted)]">{plan.period}</span>
               </div>
 
-              <p className="text-[13px] text-[var(--text-secondary)] leading-[1.6] relative z-10">
+              <p className="text-[14px] text-[var(--text-secondary)] leading-[1.7] relative z-10">
                 {plan.description}
               </p>
 
@@ -129,7 +129,7 @@ export default function Pricing() {
                 {plan.features.map((f) => (
                   <span
                     key={f}
-                    className="flex items-center gap-2.5 text-[13px] text-[var(--text-secondary)]"
+                    className="flex items-center gap-2.5 text-[14px] text-[var(--text-secondary)]"
                   >
                     <Check size={14} className={plan.highlighted ? "text-[var(--accent)]" : "text-[var(--text-muted)]"} strokeWidth={2} />
                     {f}
@@ -142,14 +142,14 @@ export default function Pricing() {
                 {plan.highlighted ? (
                   <a
                     href="#"
-                    className="cta-shimmer flex items-center justify-center w-full py-[14px] bg-[var(--cta-bg)] text-[var(--cta-text)] text-[14px] font-medium rounded-[8px] hover:shadow-[0_0_30px_rgba(241,245,249,0.12)] transition-all duration-300"
+                    className="cta-shimmer flex items-center justify-center w-full py-[15px] bg-[var(--cta-bg)] text-[var(--cta-text)] text-[15px] font-semibold rounded-[8px] hover:shadow-[0_0_30px_rgba(244,247,251,0.12)] transition-all duration-300"
                   >
                     {plan.cta}
                   </a>
                 ) : (
                   <a
                     href="#"
-                    className="flex items-center justify-center w-full py-[14px] border border-[var(--border)] text-[var(--text-secondary)] text-[14px] font-medium rounded-[8px] hover:border-[var(--border-hover)] hover:text-[var(--text-primary)] transition-all duration-300"
+                    className="flex items-center justify-center w-full py-[15px] border border-[var(--border)] text-[var(--text-secondary)] text-[15px] font-medium rounded-[8px] hover:border-[var(--border-hover)] hover:text-[var(--text-primary)] transition-all duration-300"
                   >
                     {plan.cta}
                   </a>

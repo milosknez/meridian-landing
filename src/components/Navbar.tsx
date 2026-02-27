@@ -141,7 +141,7 @@ export default function Navbar() {
     >
       <div className="relative flex items-center justify-between h-[72px] px-16">
         {/* Logo */}
-        <div className="flex items-center gap-3">
+        <a href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity duration-200">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="nox-grad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
@@ -155,7 +155,7 @@ export default function Navbar() {
           <span className="text-[17px] font-bold text-[var(--text-primary)] tracking-[4px]">
             NOX
           </span>
-        </div>
+        </a>
 
         {/* Center Links */}
         <div ref={navRef} className="flex items-center gap-1">
@@ -166,10 +166,10 @@ export default function Navbar() {
                 data-nav-key={item.key}
                 onMouseEnter={() => handleNavEnter(item.key!)}
                 onMouseLeave={handleNavItemLeave}
-                className={`flex items-center gap-1 px-4 py-2 text-[13px] tracking-[0.3px] rounded-[6px] transition-all duration-200 ${
+                className={`flex items-center gap-1 px-4 py-2 text-[14px] tracking-[0.3px] rounded-[6px] transition-all duration-200 ${
                   activeMenu === item.key
                     ? "text-[var(--text-primary)] bg-white/[0.05]"
-                    : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 }`}
               >
                 {item.label}
@@ -186,7 +186,7 @@ export default function Navbar() {
                 onMouseEnter={() => {
                   scheduleClose();
                 }}
-                className="px-4 py-2 text-[13px] text-[var(--text-muted)] tracking-[0.3px] hover:text-[var(--text-primary)] transition-all duration-200 rounded-[6px]"
+                className="px-4 py-2 text-[14px] text-[var(--text-secondary)] tracking-[0.3px] hover:text-[var(--text-primary)] transition-all duration-200 rounded-[6px]"
               >
                 {item.label}
               </a>
@@ -198,13 +198,13 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <a
             href="#"
-            className="text-[13px] text-[var(--text-secondary)] tracking-[0.3px] hover:text-[var(--text-primary)] transition-all duration-300"
+            className="text-[14px] text-[var(--text-secondary)] tracking-[0.3px] hover:text-[var(--text-primary)] transition-all duration-300"
           >
             Sign In
           </a>
           <a
             href="#"
-            className="cta-shimmer flex items-center gap-2 px-5 py-[10px] bg-[var(--cta-bg)] text-[var(--cta-text)] text-[13px] font-medium tracking-[0.3px] rounded-[6px] hover:shadow-[0_0_20px_rgba(241,245,249,0.15)] transition-all duration-300"
+            className="cta-shimmer flex items-center gap-2 px-5 py-[10px] bg-[var(--cta-bg)] text-[var(--cta-text)] text-[14px] font-medium tracking-[0.3px] rounded-[6px] hover:shadow-[0_0_20px_rgba(244,247,251,0.15)] transition-all duration-300"
           >
             Request Access <ArrowRight size={13} strokeWidth={2} />
           </a>
@@ -277,7 +277,7 @@ export default function Navbar() {
                             colIdx > 0 ? "border-l border-white/[0.06] pl-6 ml-6" : ""
                           }`}
                         >
-                          <span className="font-mono text-[9px] text-[var(--text-muted)] tracking-[3px] mb-3 px-3">
+                          <span className="font-mono text-[10px] text-[var(--text-muted)] tracking-[3px] mb-3 px-3">
                             {col.title}
                           </span>
                           {col.items.map((item) => (
@@ -294,10 +294,10 @@ export default function Navbar() {
                                 <item.icon size={15} className="text-[var(--accent)]" strokeWidth={1.5} />
                               </div>
                               <div className="flex flex-col gap-0.5">
-                                <span className="text-[13px] font-medium text-[var(--text-primary)] group-hover:text-white transition-colors duration-200">
+                                <span className="text-[14px] font-medium text-[var(--text-primary)] group-hover:text-white transition-colors duration-200">
                                   {item.label}
                                 </span>
-                                <span className="text-[12px] text-[var(--text-muted)] leading-[1.4] group-hover:text-[var(--text-secondary)] transition-colors duration-200">
+                                <span className="text-[13px] text-[var(--text-muted)] leading-[1.5] group-hover:text-[var(--text-secondary)] transition-colors duration-200">
                                   {item.desc}
                                 </span>
                               </div>

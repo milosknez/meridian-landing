@@ -32,7 +32,7 @@ export default function Footer() {
         <div className="flex justify-between">
           {/* Brand */}
           <div className="flex flex-col gap-4 max-w-[280px]">
-            <div className="flex items-center gap-2.5">
+            <a href="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity duration-200">
               <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <linearGradient id="nox-grad-footer" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
@@ -46,8 +46,8 @@ export default function Footer() {
               <span className="text-[15px] font-bold text-[var(--text-primary)] tracking-[4px]">
                 NOX
               </span>
-            </div>
-            <p className="text-[13px] text-[var(--text-muted)] leading-[1.7]">
+            </a>
+            <p className="text-[14px] text-[var(--text-secondary)] leading-[1.7]">
               Intelligence infrastructure for organizations operating at the intersection of AI and
               critical decision-making.
             </p>
@@ -57,14 +57,14 @@ export default function Footer() {
           <div className="flex gap-16">
             {footerColumns.map((col) => (
               <div key={col.title} className="flex flex-col gap-4">
-                <span className="font-mono text-[9px] text-[var(--text-muted)] tracking-[3px]">
+                <span className="font-mono text-[10px] text-[var(--text-muted)] tracking-[3px]">
                   {col.title}
                 </span>
                 {col.links.map((link) => (
                   <a
                     key={link}
                     href="#"
-                    className="text-[13px] text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors duration-300"
+                    className="text-[14px] text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors duration-300"
                   >
                     {link}
                   </a>
@@ -80,12 +80,12 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="flex items-center justify-between">
-        <span className="text-[12px] text-[var(--text-muted)]">
+        <span className="text-[13px] text-[var(--text-muted)]">
           &copy; 2026 Nox Systems, Inc. All rights reserved.
         </span>
         <div className="flex items-center gap-6">
           {["SOC 2 Type II Certified", "ISO 27001", "FedRAMP"].map((cert) => (
-            <span key={cert} className="font-mono text-[10px] text-[var(--text-dark)] tracking-[1px]">
+            <span key={cert} className="font-mono text-[10px] text-[var(--text-muted)] tracking-[1px]">
               {cert}
             </span>
           ))}

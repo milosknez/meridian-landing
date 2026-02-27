@@ -64,14 +64,14 @@ export default function Hero() {
       />
 
       {/* Left Content */}
-      <div className="absolute left-[120px] top-[160px] flex flex-col gap-8 max-w-[720px]">
+      <div className="absolute left-[120px] top-[150px] flex flex-col gap-9 max-w-[720px]">
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="font-mono text-[11px] text-[var(--accent)] tracking-[4px] flex items-center gap-3"
+          className="font-mono text-[12px] text-[var(--accent)] tracking-[4px] flex items-center gap-3"
         >
-          <span className="w-6 h-px bg-[var(--accent)]" />
+          <span className="w-8 h-px bg-[var(--accent)]" />
           SOVEREIGN AI INFRASTRUCTURE
         </motion.span>
 
@@ -79,7 +79,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[62px] font-semibold text-[var(--text-primary)] leading-[1.05] tracking-[-2px] max-w-[680px]"
+          className="text-[68px] font-semibold text-[var(--text-primary)] leading-[1.04] tracking-[-2.5px] max-w-[700px]"
         >
           Intelligence infrastructure
           <br />
@@ -91,28 +91,26 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.45 }}
-          className="text-[17px] text-[var(--text-secondary)] leading-[1.7] max-w-[540px]"
+          className="text-[18px] text-[var(--text-secondary)] leading-[1.75] max-w-[540px]"
         >
-          Enterprise-grade AI deployment platform built for regulated industries.
-          <br />
-          Real-time decisioning across defense, finance, and sovereign systems.
+          Enterprise-grade AI deployment platform built for regulated industries. Real-time decisioning across defense, finance, and sovereign systems.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6 }}
-          className="flex items-center gap-4"
+          className="flex items-center gap-5 pt-1"
         >
           <a
             href="#"
-            className="cta-shimmer flex items-center gap-2 px-7 py-[14px] bg-[var(--cta-bg)] text-[var(--cta-text)] text-[14px] font-medium tracking-[0.3px] rounded-[6px] hover:shadow-[0_0_30px_rgba(241,245,249,0.12)] transition-all duration-300"
+            className="cta-shimmer flex items-center gap-2.5 px-8 py-[15px] bg-[var(--cta-bg)] text-[var(--cta-text)] text-[15px] font-semibold tracking-[0.3px] rounded-[8px] hover:shadow-[0_0_30px_rgba(244,247,251,0.12)] transition-all duration-300"
           >
-            Request Demo <ArrowRight size={14} strokeWidth={2} />
+            Request Demo <ArrowRight size={15} strokeWidth={2} />
           </a>
           <a
             href="#"
-            className="flex items-center gap-2 px-7 py-[14px] border border-[var(--border)] text-[var(--text-secondary)] text-[14px] tracking-[0.3px] rounded-[6px] hover:border-[var(--border-hover)] hover:text-[var(--text-primary)] transition-all duration-300"
+            className="flex items-center gap-2 px-8 py-[15px] border border-[var(--border)] text-[var(--text-secondary)] text-[15px] tracking-[0.3px] rounded-[8px] hover:border-[var(--border-hover)] hover:text-[var(--text-primary)] transition-all duration-300"
           >
             View Documentation
           </a>

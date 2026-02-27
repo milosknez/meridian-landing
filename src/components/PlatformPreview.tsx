@@ -20,26 +20,26 @@ const tableRows = [
 
 export default function PlatformPreview() {
   return (
-    <section id="platform" className="relative flex flex-col items-center gap-14 w-full py-28 px-[120px] bg-[var(--bg-primary)]">
+    <section id="platform" className="relative flex flex-col items-center gap-16 w-full py-32 px-[120px] bg-[var(--bg-primary)]">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-[var(--accent)] opacity-[0.025] blur-[150px] rounded-full pointer-events-none" />
 
       {/* Header */}
       <div className="flex flex-col items-center gap-5">
         <AnimateIn variant="fadeUp" delay={0.1}>
-          <span className="font-mono text-[10px] text-[var(--accent)] tracking-[4px]">
+          <span className="font-mono text-[11px] text-[var(--accent)] tracking-[4px]">
             PLATFORM
           </span>
         </AnimateIn>
         <AnimateIn variant="fadeUp" delay={0.2}>
-          <h2 className="text-[44px] font-semibold text-[var(--text-primary)] leading-[1.12] tracking-[-1px] text-center max-w-[700px]">
+          <h2 className="text-[48px] font-semibold text-[var(--text-primary)] leading-[1.12] tracking-[-1.5px] text-center max-w-[700px]">
             Unified command surface for
             <br />
             enterprise <span className="gradient-text">AI operations.</span>
           </h2>
         </AnimateIn>
         <AnimateIn variant="fadeUp" delay={0.3}>
-          <p className="text-[16px] text-[var(--text-secondary)] text-center leading-[1.7]">
+          <p className="text-[17px] text-[var(--text-secondary)] text-center leading-[1.75]">
             Monitor, deploy, and govern AI workloads from a single operational dashboard.
           </p>
         </AnimateIn>
@@ -56,7 +56,7 @@ export default function PlatformPreview() {
                 <div className="w-2.5 h-2.5 rounded-full bg-[var(--warning)]/60" />
                 <div className="w-2.5 h-2.5 rounded-full bg-[var(--success)]/60" />
               </div>
-              <span className="text-[12px] font-medium text-[var(--text-primary)] ml-2">
+              <span className="text-[13px] font-medium text-[var(--text-primary)] ml-2">
                 Operations Dashboard
               </span>
             </div>
@@ -64,7 +64,7 @@ export default function PlatformPreview() {
               {tabs.map((tab, i) => (
                 <span
                   key={tab}
-                  className={`text-[11px] cursor-pointer transition-colors duration-300 ${i === 0 ? "font-medium text-[var(--accent)]" : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"}`}
+                  className={`text-[12px] cursor-pointer transition-colors duration-300 ${i === 0 ? "font-medium text-[var(--accent)]" : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"}`}
                 >
                   {tab}
                 </span>
@@ -87,7 +87,7 @@ export default function PlatformPreview() {
                   <span className="text-[28px] font-semibold text-[var(--text-primary)] tracking-[-0.5px]">
                     {m.value}
                   </span>
-                  <span className={`text-[11px] ${m.deltaColor}`}>{m.delta}</span>
+                  <span className={`text-[12px] ${m.deltaColor}`}>{m.delta}</span>
                 </div>
               ))}
             </div>

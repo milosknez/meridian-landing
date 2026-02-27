@@ -20,12 +20,12 @@ const logos = [
 
 export default function TrustBar() {
   return (
-    <section className="relative flex flex-col items-center gap-10 w-full py-16 px-[120px] bg-[var(--bg-primary)]">
+    <section className="relative flex flex-col items-center gap-12 w-full py-20 px-[120px] bg-[var(--bg-primary)]">
       {/* Top gradient line */}
       <div className="absolute top-0 left-[120px] right-[120px] h-px bg-gradient-to-r from-transparent via-[var(--border-hover)] to-transparent" />
 
       <AnimateIn variant="fadeIn" delay={0.1}>
-        <span className="font-mono text-[10px] text-[var(--text-muted)] tracking-[4px]">
+        <span className="font-mono text-[11px] text-[var(--text-muted)] tracking-[4px]">
           TRUSTED BY LEADING INSTITUTIONS
         </span>
       </AnimateIn>
@@ -39,7 +39,7 @@ export default function TrustBar() {
               className="flex items-center gap-2.5 px-5 py-2.5 rounded-[8px] border border-[var(--border)] bg-[var(--bg-surface)] hover:border-[var(--border-hover)] transition-all duration-300"
             >
               <Icon size={15} className="text-[var(--accent)]" strokeWidth={1.5} />
-              <span className="text-[12px] font-medium text-[var(--text-secondary)]">
+              <span className="text-[13px] font-medium text-[var(--text-secondary)]">
                 {label}
               </span>
             </div>
@@ -53,7 +53,7 @@ export default function TrustBar() {
           {logos.map((name) => (
             <span
               key={name}
-              className="text-[11px] font-semibold text-[var(--text-dark)] tracking-[3px] hover:text-[var(--text-muted)] transition-colors duration-300"
+              className="text-[12px] font-semibold text-[var(--text-muted)] tracking-[3px] hover:text-[var(--text-secondary)] transition-colors duration-300"
             >
               {name}
             </span>
